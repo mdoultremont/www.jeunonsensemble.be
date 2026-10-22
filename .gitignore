@@ -1,14 +1,7 @@
-# dependencies
 node_modules
-
-# logs
-npm-debug.log
-
-# Nuxt build
-.nuxt
-
-# Nuxt generate
 dist
-
-# .env
-.env*
+.tanstack
+.wrangler
+.DS_Store
+.dev.vars*
+!.dev.vars.example

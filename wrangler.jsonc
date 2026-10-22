@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jeunonsensemble",
+  "main": "@tanstack/react-start/server-entry",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "upload_source_maps": true,
+  "vars": {
+    "CONTENTFUL_SPACE_ID": "v9fs1t81g1do",
+  },
+  // CONTENTFUL_ACCESS_TOKEN is a secret: `wrangler secret put CONTENTFUL_ACCESS_TOKEN`.
+  "secrets": {
+    "required": ["CONTENTFUL_ACCESS_TOKEN"],
+  },
+}
