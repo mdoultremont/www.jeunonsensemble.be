@@ -1,6 +1,6 @@
 # jeunonsensemble.be
 
-Site web de Jeûnons Ensemble. Content lives in Contentful; the site is a TanStack Start app rendered on Cloudflare Workers.
+Site web de Jeûnons Ensemble. Content lives in Contentful; the site is a TanStack Start app, prerendered to static files and served by Cloudflare Workers Static Assets.
 
 ## Setup
 
@@ -12,22 +12,21 @@ pnpm dev             # http://localhost:3000
 
 ## Scripts
 
-| Script                | What it does                                                          |
-| --------------------- | --------------------------------------------------------------------- |
-| `pnpm dev`            | Dev server running in workerd                                         |
-| `pnpm build`          | Production build into `dist/`                                         |
-| `pnpm preview`        | Build, then serve the production bundle locally                       |
-| `pnpm check`          | oxfmt check, oxlint, and `tsc`                                        |
-| `pnpm format`         | Format with oxfmt                                                     |
-| `pnpm deploy`         | Build and `wrangler deploy`                                           |
-| `pnpm deploy:preview` | Build and create a Worker Preview named after the current git branch  |
-| `pnpm cf-typegen`     | Regenerate `worker-configuration.d.ts` after editing `wrangler.jsonc` |
+| Script                | What it does                                                         |
+| --------------------- | -------------------------------------------------------------------- |
+| `pnpm dev`            | Dev server, fetching content from Contentful on each request         |
+| `pnpm build`          | Prerender every page into `dist/client`                              |
+| `pnpm preview`        | Build, then serve `dist/client` with Wrangler, as in production      |
+| `pnpm check`          | oxfmt check, oxlint, and `tsc`                                       |
+| `pnpm format`         | Format with oxfmt                                                    |
+| `pnpm deploy`         | Build and `wrangler deploy`                                          |
+| `pnpm deploy:preview` | Build and create a Worker Preview named after the current git branch |
 
 ## Content
 
-Content is a build input. `vite build` (and `pnpm dev` at startup) fetches the `master` entry from Contentful once and bakes it into the Worker (`src/content/site-snapshot.ts`), so serving pages never calls Contentful. This keeps the site well inside the Contentful Free plan's monthly API call limit.
+Content is a build input. `vite build` prerenders `/`, follows its links, and writes every page as static HTML, along with `404.html` and `sitemap.xml`. Contentful is called once per page during the build and never when serving, so the site stays well inside the Contentful Free plan's monthly API call limit. Client-side navigation reuses the content embedded in the first page, and `getSite` falls back to a static JSON file saved at build time instead of calling a server.
 
-The first page of the entry is served at `/`, the others at `/<slug>`. In `pnpm dev`, restart the server to pick up new content.
+The first page of the entry is served at `/`, the others at `/<slug>`. Unknown URLs get `404.html` with a 404 status.
 
 ## Deploy
 

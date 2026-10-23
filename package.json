@@ -7,15 +7,14 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "preview": "pnpm run build && vite preview",
+    "preview": "pnpm run build && wrangler dev",
     "deploy": "pnpm run build && wrangler deploy",
     "deploy:preview": "pnpm run build && wrangler preview",
     "typecheck": "tsc",
     "lint": "oxlint",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
-    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck",
-    "cf-typegen": "CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV=false wrangler types"
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.2.2",
@@ -23,12 +22,12 @@
     "@fontsource-variable/rubik": "^5.3.0",
     "@tanstack/react-router": "^1.170.46",
     "@tanstack/react-start": "^1.169.4",
+    "@tanstack/start-static-server-functions": "^1.167.44",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.64.0",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
