@@ -18,7 +18,9 @@ export const Route = createRootRoute({
       { name: "theme-color", content: "#2680c2" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "content-source", content: import.meta.env.CONTENT_SOURCE },
-      ...(import.meta.env.SITE_NOINDEX ? [{ name: "robots", content: "noindex" }] : []),
+      ...(import.meta.env.CONTENT_SOURCE === "fixture"
+        ? [{ name: "robots", content: "noindex" }]
+        : []),
       { property: "og:site_name", content: site?.name },
       // Unmatched nested paths render the root as their leaf after hydration.
       ...(rootNotFound || status === "notFound" ? notFoundHead().meta : []),

@@ -34,7 +34,7 @@ pnpm exec playwright install chromium
 pnpm test:browser
 ```
 
-`check` runs formatting, lint, and TypeScript checks. Unit tests cover parsing, metadata, image URLs, rich text, and deployment source guards. The output verifier reads actual HTML and sitemap routes, checks unique titles, descriptions, canonical and Open Graph tags, and verifies 404, manifest, robots discovery, and static function payloads.
+`check` runs formatting, lint, and TypeScript checks. Unit tests cover parsing, metadata, image URLs, rich text, and missing build credentials. The output verifier reads actual HTML and sitemap routes, checks unique titles, descriptions, canonical and Open Graph tags, and verifies 404, manifest, robots discovery, and static function payloads.
 
 Browser tests serve the fixture through Wrangler and cover focus containment, Escape, scroll restoration, menu navigation and resize, short-screen scrolling, skip links, overflow, computed contrast, banner layout, metadata, and actual HTTP 404 status. CI runs these checks without credentials. CI installs Chromium with OS dependencies.
 
@@ -65,8 +65,10 @@ pnpm deploy
 pnpm deploy:preview
 ```
 
-Both entry points reject fixture mode before building, run the checked live build, verify the output, then invoke Wrangler. `deploy:preview` forces `SITE_NOINDEX=1` and verifies with `--preview`. `deploy` rejects `SITE_NOINDEX=1`, including values from `.env`. Normal `pnpm verify` rejects content pages with `noindex`. The production config always points at `dist/client`. `wrangler deploy` used directly bypasses these script checks.
+Both entry points explicitly build with `CONTENT_SOURCE=contentful`, run the checked live build and artifact verifier, then invoke `wrangler deploy` or `wrangler preview`. The verifier rejects content pages with `noindex` and fixture content in production artifacts. The production config always points at `dist/client`. Running Wrangler directly bypasses the build and verification commands.
 
-Workers Builds can keep `pnpm build` as its build command because the check gate is part of that command. Use `pnpm build && pnpm verify` to add artifact verification to the build command. Configure `CONTENTFUL_ACCESS_TOKEN` as a build secret. Keep `CONTENT_SOURCE` unset or set to `contentful`. For previews through Workers Builds, explicitly set `SITE_NOINDEX=1` and use `pnpm build && pnpm run verify --preview`. Branch identity is not inferred from dashboard-specific variables. Keep `SITE_NOINDEX` unset for production builds.
+Workers Builds can keep `pnpm build` as its build command because the check gate is part of that command. Use `pnpm build && pnpm verify` to add artifact verification to the build command. Configure `CONTENTFUL_ACCESS_TOKEN` as a build secret. Keep `CONTENT_SOURCE` unset or set to `contentful`.
+
+Cloudflare automatically adds `X-Robots-Tag: noindex` to [workers.dev Preview URLs](https://developers.cloudflare.com/workers/previews/custom-domains/#protect-preview-content). This project uses those previews, so no build flag is needed. Cloudflare does not add that header to custom preview domains.
 
 Workers Builds deploys `master` to production and other branches to Worker Previews. Publishing in Contentful can trigger a rebuild through a webhook to the Workers Builds deploy hook. Treat the hook URL as a secret. Review the French content and the live browser result before deployment.

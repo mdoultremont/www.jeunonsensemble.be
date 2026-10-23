@@ -16,9 +16,6 @@ export default defineConfig(({ mode }) => {
     build: { outDir: source === "fixture" ? "dist-fixture" : "dist" },
     define: {
       "import.meta.env.CONTENT_SOURCE": JSON.stringify(source),
-      "import.meta.env.SITE_NOINDEX": JSON.stringify(
-        source === "fixture" || env.SITE_NOINDEX === "1",
-      ),
     },
     plugins: [
       tailwindcss(),

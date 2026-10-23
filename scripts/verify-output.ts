@@ -4,13 +4,8 @@ import path from "node:path";
 
 import { SITE_ORIGIN } from "../src/content/page-head";
 
-const [directory = "dist/client", source = "contentful", indexingMode] = process.argv.slice(2);
+const [directory = "dist/client", source = "contentful"] = process.argv.slice(2);
 assert.ok(source === "contentful" || source === "fixture", "Expected contentful or fixture source");
-assert.ok(
-  indexingMode === undefined || indexingMode === "--preview",
-  "Expected --preview or no indexing override",
-);
-const preview = source === "fixture" || indexingMode === "--preview";
 const read = (file: string) => readFile(path.join(directory, file), "utf8");
 const decode = (text: string) =>
   text
@@ -76,7 +71,7 @@ for (const url of urls) {
   assert.equal(singleMeta(html, "twitter:card"), "summary_large_image");
   assert.equal(tags(html, "link").filter((tag) => tag.rel === "mask-icon").length, 0);
   assert.equal(meta(html, "msapplication-TileColor").length, 0);
-  if (preview) assert.match(singleMeta(html, "robots"), /noindex/);
+  if (source === "fixture") assert.match(singleMeta(html, "robots"), /noindex/);
   else
     assert.ok(
       !meta(html, "robots").some((tag) => /noindex/i.test(tag.content ?? "")),
