@@ -45,8 +45,8 @@ export function Navbar() {
 
   useEffect(
     () =>
-      router.subscribe("onResolved", ({ pathChanged }) => {
-        if (pathChanged) closeMenu();
+      router.subscribe("onResolved", ({ hrefChanged }) => {
+        if (hrefChanged) closeMenu();
       }),
     [router, closeMenu],
   );

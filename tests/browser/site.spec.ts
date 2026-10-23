@@ -242,7 +242,7 @@ test("footer section current location matches both page and hash", async ({ page
   await expect(footer.locator('a[href*="#"][aria-current]')).toHaveCount(1);
 });
 
-test("Back and Forward between slug pages close an open menu and restore scroll", async ({
+test("Back and Forward between pages and sections close the menu and restore scroll", async ({
   page,
 }) => {
   await page.goto("/programme");
@@ -260,6 +260,18 @@ test("Back and Forward between slug pages close an open menu and restore scroll"
   await opener.click();
   await page.goForward();
   await expect(page).toHaveURL(/\/pourquoi$/);
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+  expect(await page.evaluate(() => document.body.style.overflow)).toBe("");
+  await page.locator("main h2 a").first().click();
+  await expect(page).toHaveURL(/\/pourquoi#section-2$/);
+  await opener.click();
+  await page.goBack();
+  await expect(page).toHaveURL(/\/pourquoi$/);
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+  expect(await page.evaluate(() => document.body.style.overflow)).toBe("");
+  await opener.click();
+  await page.goForward();
+  await expect(page).toHaveURL(/\/pourquoi#section-2$/);
   await expect(page.getByRole("dialog")).not.toBeVisible();
   expect(await page.evaluate(() => document.body.style.overflow)).toBe("");
 });
