@@ -7,7 +7,12 @@
   "observability": { "enabled": true },
   "upload_source_maps": true,
   "preview_urls": true,
-  "previews": {},
+  // Previews don't inherit top-level vars.
+  "previews": {
+    "vars": {
+      "CONTENTFUL_SPACE_ID": "v9fs1t81g1do",
+    },
+  },
   "vars": {
     "CONTENTFUL_SPACE_ID": "v9fs1t81g1do",
   },
