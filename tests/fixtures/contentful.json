@@ -1,0 +1,836 @@
+{
+  "items": [
+    {
+      "sys": {
+        "id": "master"
+      },
+      "fields": {
+        "websiteName": "Jeûnons Ensemble",
+        "description": "Site de démonstration pour les tests locaux.",
+        "email": "bonjour@example.com",
+        "copyright": "Jeûnons Ensemble",
+        "pages": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "page-0"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "page-1"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "page-2"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "page-3"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "page-4"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "page-5"
+            }
+          }
+        ],
+        "shareImage": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "photo"
+          }
+        }
+      }
+    }
+  ],
+  "includes": {
+    "Entry": [
+      {
+        "sys": {
+          "id": "section-0"
+        },
+        "fields": {
+          "slug": "section-0",
+          "title": "Accueil en pratique",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "blockquote",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "paragraph",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Citation de démonstration à ignorer dans le résumé.",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "(Auteur de démonstration)",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Accueil. Ce contenu fictif permet de vérifier la lecture et la navigation du site sans accès au CMS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Les paragraphes restent lisibles sur un petit écran et les liens sont accessibles au clavier.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "unordered-list",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Un premier point à lire.",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "list-item",
+                    "data": {},
+                    "content": [
+                      {
+                        "nodeType": "paragraph",
+                        "data": {},
+                        "content": [
+                          {
+                            "nodeType": "text",
+                            "value": "Un second point à lire.",
+                            "marks": [],
+                            "data": {}
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-asset-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Asset",
+                      "id": "photo"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "mailto:bonjour@example.com"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Nous contacter",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " • ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "/programme"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Programme",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "value": " • ",
+                    "marks": [],
+                    "data": {}
+                  },
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://example.com"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "value": "Site externe",
+                        "marks": [],
+                        "data": {}
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "entry-hyperlink",
+                    "data": {
+                      "target": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Entry",
+                          "id": "page-1"
+                        }
+                      }
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "data": {},
+                        "marks": [],
+                        "value": "Programme lié"
+                      }
+                    ]
+                  },
+                  {
+                    "nodeType": "text",
+                    "data": {},
+                    "marks": [],
+                    "value": " et "
+                  },
+                  {
+                    "nodeType": "entry-hyperlink",
+                    "data": {
+                      "target": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Entry",
+                          "id": "section-1"
+                        }
+                      }
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "data": {},
+                        "marks": [],
+                        "value": "Section du programme"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "embedded-entry-inline",
+                    "data": {
+                      "target": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Entry",
+                          "id": "page-1"
+                        }
+                      }
+                    },
+                    "content": []
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "page-1"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "entry-hyperlink",
+                    "data": {
+                      "target": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Entry",
+                          "id": "unpublished-rich-entry"
+                        }
+                      }
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "data": {},
+                        "marks": [],
+                        "value": "Contenu indisponible"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "embedded-entry-block",
+                "data": {
+                  "target": {
+                    "sys": {
+                      "type": "Link",
+                      "linkType": "Entry",
+                      "id": "unsupported-entry"
+                    }
+                  }
+                },
+                "content": []
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://www.jeunonsensemble.be/programme?origine=test#section-1"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "data": {},
+                        "marks": [],
+                        "value": "Programme absolu"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "hyperlink",
+                    "data": {
+                      "uri": "https://example.com/document"
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "data": {},
+                        "marks": [],
+                        "value": "Lien externe"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "page-0"
+        },
+        "fields": {
+          "slug": "/",
+          "title": "Accueil",
+          "banner": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "photo"
+            }
+          },
+          "sections": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "section-0"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "shared"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sys": {
+          "id": "section-1"
+        },
+        "fields": {
+          "slug": "section-1",
+          "title": "Programme en pratique",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Programme. Ce contenu fictif permet de vérifier la lecture et la navigation du site sans accès au CMS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "page-1"
+        },
+        "fields": {
+          "slug": "programme",
+          "title": "Programme",
+          "banner": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "photo"
+            }
+          },
+          "sections": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "section-1"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "shared"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sys": {
+          "id": "section-2"
+        },
+        "fields": {
+          "slug": "section-2",
+          "title": "Jeûner, pourquoi ? en pratique",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Jeûner, pourquoi ?. Ce contenu fictif permet de vérifier la lecture et la navigation du site sans accès au CMS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "page-2"
+        },
+        "fields": {
+          "slug": "pourquoi",
+          "title": "Jeûner, pourquoi ?",
+          "banner": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "photo"
+            }
+          },
+          "sections": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "section-2"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "shared"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sys": {
+          "id": "section-3"
+        },
+        "fields": {
+          "slug": "section-3",
+          "title": "Jeûner, comment ? en pratique",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Jeûner, comment ?. Ce contenu fictif permet de vérifier la lecture et la navigation du site sans accès au CMS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "page-3"
+        },
+        "fields": {
+          "slug": "comment",
+          "title": "Jeûner, comment ?",
+          "banner": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "photo"
+            }
+          },
+          "sections": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "section-3"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "shared"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sys": {
+          "id": "section-4"
+        },
+        "fields": {
+          "slug": "section-4",
+          "title": "Pour en savoir plus en pratique",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Pour en savoir plus. Ce contenu fictif permet de vérifier la lecture et la navigation du site sans accès au CMS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "page-4"
+        },
+        "fields": {
+          "slug": "ressources",
+          "title": "Pour en savoir plus",
+          "banner": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "photo"
+            }
+          },
+          "sections": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "section-4"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "shared"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sys": {
+          "id": "section-5"
+        },
+        "fields": {
+          "slug": "section-5",
+          "title": "Contact en pratique",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Contact. Ce contenu fictif permet de vérifier la lecture et la navigation du site sans accès au CMS.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "page-5"
+        },
+        "fields": {
+          "slug": "contact",
+          "title": "Contact",
+          "banner": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "photo"
+            }
+          },
+          "sections": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "section-5"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Entry",
+                "id": "shared"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "sys": {
+          "id": "shared"
+        },
+        "fields": {
+          "slug": "partage",
+          "title": "Une expérience partagée",
+          "content": {
+            "nodeType": "document",
+            "data": {},
+            "content": [
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "text",
+                    "value": "Ce paragraphe de démonstration est partagé entre les pages.",
+                    "marks": [],
+                    "data": {}
+                  }
+                ]
+              },
+              {
+                "nodeType": "paragraph",
+                "data": {},
+                "content": [
+                  {
+                    "nodeType": "entry-hyperlink",
+                    "data": {
+                      "target": {
+                        "sys": {
+                          "type": "Link",
+                          "linkType": "Entry",
+                          "id": "shared"
+                        }
+                      }
+                    },
+                    "content": [
+                      {
+                        "nodeType": "text",
+                        "data": {},
+                        "marks": [],
+                        "value": "Partage local"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "sys": {
+          "id": "unsupported-entry"
+        },
+        "fields": {
+          "title": "Entrée sans destination"
+        }
+      }
+    ],
+    "Asset": [
+      {
+        "sys": {
+          "id": "photo"
+        },
+        "fields": {
+          "title": "Image de démonstration",
+          "file": {
+            "url": "/og-image.jpg",
+            "details": {
+              "image": {
+                "width": 1145,
+                "height": 599
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -8,6 +8,11 @@
   --breakpoint-xl: 75rem;
   --breakpoint-2xl: initial;
 
+  --text-sm--line-height: 1.15;
+  --text-lg--line-height: 1.15;
+  --text-xl--line-height: 1.15;
+  --text-4xl--line-height: 1.15;
+
   --font-sans: "Rubik Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --color-grey-darkest: #102a43;
@@ -27,4 +32,124 @@
   strong {
     font-weight: 500;
   }
+}
+
+@theme {
+  --color-nav: var(--color-blue-dark);
+  --color-nav-text: #ffffff;
+  --color-link: var(--color-blue-dark);
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+  body {
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+  }
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 4px;
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+  ::selection {
+    background: var(--color-blue-dark);
+    color: white;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 30;
+  transform: translateY(-200%);
+  padding: 0.75rem 1rem;
+  background: var(--color-nav);
+  color: var(--color-nav-text);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 0;
+  border-top: 0.5rem solid var(--color-blue);
+  padding: max(1rem, env(safe-area-inset-top)) max(2rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom)) max(2rem, env(safe-area-inset-left));
+  background: var(--color-grey-lightest);
+  color: var(--color-grey-darkest);
+}
+.mobile-menu::backdrop {
+  background: var(--color-grey-lightest);
+}
+
+.rich-text {
+  max-width: 68ch;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.rich-text p + p {
+  margin-top: 1rem;
+}
+.rich-text :is(ul, ol, blockquote) {
+  margin-block: 1.25rem;
+}
+.rich-text li + li {
+  margin-top: 0.5rem;
+}
+.rich-text li > :is(ul, ol) {
+  margin-block: 0.5rem;
+}
+.rich-text :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+.rich-text h1 {
+  font-size: 2rem;
+}
+.rich-text h2 {
+  font-size: 1.5rem;
+}
+.rich-text h3 {
+  font-size: 1.25rem;
+}
+.rich-text blockquote {
+  padding-left: 1rem;
+  border-left: 1px solid var(--color-blue);
+}
+.rich-text blockquote p + p {
+  margin-top: 0.75rem;
+}
+.rich-text > :first-child {
+  margin-top: 0;
+}
+.rich-text > :last-child {
+  margin-bottom: 0;
+}
+
+.rich-text a {
+  color: var(--color-link);
+  text-decoration-line: underline;
 }

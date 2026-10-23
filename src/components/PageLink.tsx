@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { createLink } from "@tanstack/react-router";
+import type { ComponentProps, ReactNode } from "react";
 
 import type { Page } from "../content/site";
 
@@ -12,10 +12,30 @@ type Props = {
   children: ReactNode;
 };
 
-export function PageLink({ page, ...props }: Props) {
+const Link = createLink(function PageAnchor(props: ComponentProps<"a">) {
+  return (
+    <a
+      {...props}
+      aria-current={
+        props.href?.includes("#") && props["aria-current"] ? "location" : props["aria-current"]
+      }
+    >
+      {props.children}
+    </a>
+  );
+});
+
+export function PageLink({ page, hash, ...props }: Props) {
+  const activeOptions = { exact: true, includeHash: Boolean(hash) };
   return page.isHome ? (
-    <Link to="/" {...props} />
+    <Link to="/" hash={hash} activeOptions={activeOptions} {...props} />
   ) : (
-    <Link to="/$slug" params={{ slug: page.slug }} {...props} />
+    <Link
+      to="/$slug"
+      params={{ slug: page.slug }}
+      hash={hash}
+      activeOptions={activeOptions}
+      {...props}
+    />
   );
 }

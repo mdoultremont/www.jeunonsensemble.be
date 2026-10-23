@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jeunonsensemble-local-fixture",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist-fixture/client",
+    "not_found_handling": "404-page",
+  },
+}

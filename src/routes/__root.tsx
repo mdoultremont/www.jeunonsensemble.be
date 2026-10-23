@@ -1,41 +1,56 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 
 import { Footer } from "../components/Footer";
 import { NotFound } from "../components/NotFound";
+import { notFoundHead } from "../content/page-head";
 import { getSite } from "../content/get-site";
+import rubikLatin from "@fontsource-variable/rubik/files/rubik-latin-wght-normal.woff2?url";
 import styles from "../styles.css?url";
 
 export const Route = createRootRoute({
   loader: () => getSite(),
   staleTime: Infinity,
-  head: ({ loaderData: site }) => ({
+  head: ({ loaderData: site, match: { _notFound: rootNotFound, status } }) => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: site?.name },
-      { name: "description", content: site?.description },
       { name: "theme-color", content: "#2680c2" },
-      { name: "msapplication-TileColor", content: "#f0f4f8" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "content-source", content: import.meta.env.CONTENT_SOURCE },
+      ...(import.meta.env.CONTENT_SOURCE === "fixture"
+        ? [{ name: "robots", content: "noindex" }]
+        : []),
       { property: "og:site_name", content: site?.name },
-      { property: "og:description", content: site?.description },
-      { property: "og:image", content: "https://jeunonsensemble.be/og-image.jpg" },
-      { property: "og:image:width", content: "1145" },
-      { property: "og:image:height", content: "599" },
+      // Unmatched nested paths render the root as their leaf after hydration.
+      ...(rootNotFound || status === "notFound" ? notFoundHead().meta : []),
     ],
     links: [
       { rel: "stylesheet", href: styles },
+      {
+        rel: "preload",
+        href: rubikLatin,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+      },
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
       { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/manifest.json" },
-      { rel: "mask-icon", href: "/safari-pinned-tab.svg", color: "#2680c2" },
     ],
   }),
   shellComponent: Document,
   component: Layout,
-  notFoundComponent: NotFound,
+  notFoundComponent: function RootNotFound() {
+    // Match the Outlet boundary in the prerendered /404 shell.
+    return (
+      <Suspense fallback={null}>
+        <NotFound />
+      </Suspense>
+    );
+  },
 });
 
 function Document({ children }: { children: ReactNode }) {
@@ -44,7 +59,10 @@ function Document({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-grey-lightest font-sans leading-[1.15] text-grey-darkest antialiased">
+      <body className="bg-grey-lightest font-sans text-grey-darkest antialiased">
+        <a href="#main-content" className="skip-link">
+          Aller au contenu
+        </a>
         {children}
         <Scripts />
       </body>
