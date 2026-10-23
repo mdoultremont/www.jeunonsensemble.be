@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "@fontsource-variable/rubik";
+
+@theme {
+  --breakpoint-sm: 36rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 62rem;
+  --breakpoint-xl: 75rem;
+  --breakpoint-2xl: initial;
+
+  --font-sans: "Rubik Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --color-grey-darkest: #102a43;
+  --color-grey-darker: #334e68;
+  --color-grey-light: #829ab1;
+  --color-grey-lighter: #bcccdc;
+  --color-grey-lightest: #f0f4f8;
+  --color-blue-dark: #186faf;
+  --color-blue: #2680c2;
+  --color-blue-lighter: #84c5f4;
+  --color-blue-lightest: #dceefb;
+}
+
+/* The original site only loaded Rubik 400 and let the browser fake bold, which reads close to 500. */
+@layer base {
+  b,
+  strong {
+    font-weight: 500;
+  }
+}
