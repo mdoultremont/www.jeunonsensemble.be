@@ -6,8 +6,8 @@ Site web de Jeûnons Ensemble. Content lives in Contentful; the site is a TanSta
 
 ```bash
 pnpm install
-cp .dev.vars.example .dev.vars # then fill in the Contentful delivery token
-pnpm dev                       # http://localhost:3000
+cp .env.example .env # then fill in the Contentful delivery token
+pnpm dev             # http://localhost:3000
 ```
 
 ## Scripts
@@ -25,15 +25,15 @@ pnpm dev                       # http://localhost:3000
 
 ## Content
 
-Every request reads the `master` entry from Contentful (cached at the edge for 60 seconds), so edits show up within a minute without a rebuild. The first page of the entry is served at `/`, the others at `/<slug>`.
+Content is a build input. `vite build` (and `pnpm dev` at startup) fetches the `master` entry from Contentful once and bakes it into the Worker (`src/content/site-snapshot.ts`), so serving pages never calls Contentful. This keeps the site well inside the Contentful Free plan's monthly API call limit.
+
+The first page of the entry is served at `/`, the others at `/<slug>`. In `pnpm dev`, restart the server to pick up new content.
 
 ## Deploy
 
-The Contentful delivery token is a secret. Production and Worker Previews each need their own copy:
+Workers Builds deploys `master` to production and every other branch to a Worker Preview. The Contentful delivery token is only needed at build time:
 
-```bash
-pnpm exec wrangler secret put CONTENTFUL_ACCESS_TOKEN                     # production
-pnpm exec wrangler preview base-config secret put CONTENTFUL_ACCESS_TOKEN # every Preview
-pnpm deploy          # production
-pnpm deploy:preview  # Preview for the current branch
-```
+- Workers Builds: add `CONTENTFUL_ACCESS_TOKEN` under Settings › Builds › Variables and secrets.
+- Locally: put it in `.env`, then `pnpm deploy` or `pnpm deploy:preview`.
+
+Publishing in Contentful rebuilds the site. A Contentful webhook (Settings › Webhooks, on Entry and Asset publish/unpublish) POSTs to a Workers Builds deploy hook for `master` (Settings › Builds › Deploy Hooks). Treat the hook URL as a secret: anyone who has it can trigger builds.

@@ -1,8 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import { env } from "cloudflare:workers";
+import site from "virtual:site";
 
-import { fetchSite } from "./site";
-
-export const getSite = createServerFn({ method: "GET" }).handler(() =>
-  fetchSite(env.CONTENTFUL_SPACE_ID, env.CONTENTFUL_ACCESS_TOKEN),
-);
+export const getSite = createServerFn({ method: "GET" }).handler(() => site);

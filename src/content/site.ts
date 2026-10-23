@@ -103,10 +103,7 @@ export async function fetchSite(spaceId: string, accessToken: string): Promise<S
   url.searchParams.set("content_type", "master");
   url.searchParams.set("include", "2");
 
-  const response = await fetch(url, {
-    headers: { Authorization: `Bearer ${accessToken}` },
-    cf: { cacheTtl: 60, cacheEverything: true },
-  });
+  const response = await fetch(url, { headers: { Authorization: `Bearer ${accessToken}` } });
   if (!response.ok) {
     throw new Error(`Contentful responded ${response.status} ${response.statusText}`);
   }
