@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { pagePath, SITE_ORIGIN } from "../content/page-head";
+
 import { getSite } from "../content/get-site";
 
 export const Route = createFileRoute("/sitemap.xml")({
@@ -10,7 +12,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const urls = site.pages
           .map(
             (page) =>
-              `  <url><loc>https://jeunonsensemble.be/${page.isHome ? "" : page.slug}</loc></url>`,
+              `  <url><loc>${`${SITE_ORIGIN}${pagePath(page)}`.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")}</loc></url>`,
           )
           .join("\n");
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
